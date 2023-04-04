@@ -1,9 +1,12 @@
+<?php
+$images = get_template_directory_uri() . "/assets/images";
+?>
 <header class="header">
   <div class="container header__container">
     <div class="header--left">
       <a href="/" class="logo">
-        <img class="logo--main" src="../assets/images/top/logo.svg" alt="" width="168" height="24">
-        <img class="logo--scroll" src="../assets/images/top/logo-footer.svg" alt="" width="168" height="24">
+        <img class="logo--main" src="<?= $images ?>/top/logo.svg" alt="" width="168" height="24">
+        <img class="logo--scroll" src="<?= $images ?>/top/logo-footer.svg" alt="" width="168" height="24">
       </a>
     </div>
     <div class="header--right">

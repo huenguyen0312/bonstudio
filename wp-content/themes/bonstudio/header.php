@@ -1,3 +1,6 @@
+<?php
+$assets = get_template_directory_uri() . "/assets/";
+?>
 <!DOCTYPE html>
 <html lang="ja">
 
