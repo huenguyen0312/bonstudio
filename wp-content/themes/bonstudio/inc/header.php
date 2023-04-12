@@ -18,19 +18,19 @@ $images = get_template_directory_uri() . "/assets/images";
           </li>
 
           <li class="header-menu__item">
-            <a href="/about/index.html">Giới thiệu</a>
+            <a href="/about/">Giới thiệu</a>
           </li>
 
           <li class="header-menu__item">
-            <a href="/service/index.html">Báo giá - Dịch vụ</a>
+            <a href="/service/">Báo giá - Dịch vụ</a>
           </li>
 
           <li class="header-menu__item">
-            <a href="/album/index.html">Thư viện ảnh</a>
+            <a href="/album/">Thư viện ảnh</a>
           </li>
 
           <li class="header-menu__item">
-            <a href="/blog/index.html">Blog</a>
+            <a href="/blog/">Blog</a>
           </li>
 
         </ul>
