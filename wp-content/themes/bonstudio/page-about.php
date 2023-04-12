@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: About Page
+ * Template Name: About
  */
 get_header();
 $images = get_template_directory_uri() . '/assets/images';
