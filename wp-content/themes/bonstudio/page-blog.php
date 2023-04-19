@@ -4,6 +4,15 @@
  */
 get_header();
 $images = get_template_directory_uri() . '/assets/images';
+$current_page = $_GET['page'] ?? 1;
+$current_page = (int)$current_page;
+$perPage = 6;
+
+$posts = new WP_Query(array(
+	'posts_per_page' => $perPage,
+	'paged' => $current_page,
+));
+
 ?>
   <main class="main" role="main">
     <section class="sub-keyvisual">
@@ -23,105 +32,29 @@ $images = get_template_directory_uri() . '/assets/images';
         ／
       </li>
       <li>
-        <label class="">Page abc xyz</label>
+        <label class="">Blogs</label>
       </li>
     </ul>
 
     <section class="section blog blog-page-section">
       <div class="container">
+<?php if ($posts->have_posts()) { ?>
         <ul class="blog__list">
-
+	        <?php while ($posts->have_posts()) {
+		        $posts->the_post(); ?>
           <li class="blog__item">
-            <a class="blog__content" href="/blog/1.html">
+            <a class="blog__content" href="<?= get_permalink() ?>">
               <div class="blog__image">
-                <img src="<?= $images ?>/top/img-blog-01.png" alt="" width="330" height="220">
+                <img src="<?= get_the_post_thumbnail_url() ?>" alt="" width="330" height="220">
               </div>
-              <h3 class="blog__title">Chụp hình sơ sinh - Bộ hình quý giá nhất cuộc đời con yêu</h3>
-              <p class="blog__description">Giai đoạn sơ sinh là thời điểm rất ý nghĩa và quan trọng với con, mỗi khoảnh khắc của con là kỷ niệm vô giá nên ba mẹ đừng quên lưu giữ nhé!</p>
+              <h3 class="blog__title"><?= get_the_title() ?></h3>
+              <p class="blog__description"><?= get_the_excerpt() ?></p>
             </a>
           </li>
-
-          <li class="blog__item">
-            <a class="blog__content" href="/blog/1.html">
-              <div class="blog__image">
-                <img src="<?= $images ?>/top/img-blog-02.png" alt="" width="330" height="220">
-              </div>
-              <h3 class="blog__title">Mừng sinh nhật bé, mừng niềm vui của ba mẹ</h3>
-              <p class="blog__description">Hiểu được tâm tư của ba mẹ muốn lưu giữ những khoảnh khắc đầy ý nghĩa đó, Bon studio đã làm việc chăm chỉ để cho ra rất nhiều những bối cảnh đáng yêu ...</p>
-            </a>
-          </li>
-
-          <li class="blog__item">
-            <a class="blog__content" href="/blog/1.html">
-              <div class="blog__image">
-                <img src="<?= $images ?>/top/img-blog-03.png" alt="" width="330" height="220">
-              </div>
-              <h3 class="blog__title">Tết đến nơi rồi! Ối giời ơi các bạn mình ơi!</h3>
-              <p class="blog__description">Hiểu được tâm tư của ba mẹ muốn lưu giữ những khoảnh khắc đầy ý nghĩa đó, Bon studio đã làm việc chăm chỉ để cho ra rất nhiều những bối cảnh đáng yêu ...</p>
-            </a>
-          </li>
-
-          <li class="blog__item">
-            <a class="blog__content" href="/blog/1.html">
-              <div class="blog__image">
-                <img src="<?= $images ?>/top/img-blog-04.png" alt="" width="330" height="220">
-              </div>
-              <h3 class="blog__title">Tiết lộ bí quyết tạo dáng chụp ảnh gia đình đẹp ai cũng cần biết</h3>
-              <p class="blog__description">Chụp ảnh gia đình hiện nay đang rất được các gia đình đều mong muốn sở hữu. Bởi nó giúp lưu giữ những khoảnh khắc hạnh phúc của cả nhà bạn.</p>
-            </a>
-          </li>
-
-          <li class="blog__item">
-            <a class="blog__content" href="/blog/1.html">
-              <div class="blog__image">
-                <img src="<?= $images ?>/top/img-blog-05.png" alt="" width="330" height="220">
-              </div>
-              <h3 class="blog__title">Tết đến nơi rồi! Ối giời ơi các bạn mình ơi!</h3>
-              <p class="blog__description">Hiểu được tâm tư của ba mẹ muốn lưu giữ những khoảnh khắc đầy ý nghĩa đó, Bon studio đã làm việc chăm chỉ để cho ra rất nhiều những bối cảnh đáng yêu ...</p>
-            </a>
-          </li>
-
-          <li class="blog__item">
-            <a class="blog__content" href="/blog/1.html">
-              <div class="blog__image">
-                <img src="<?= $images ?>/top/img-blog-06.png" alt="" width="330" height="220">
-              </div>
-              <h3 class="blog__title">Tết đến nơi rồi! Ối giời ơi các bạn mình ơi!</h3>
-              <p class="blog__description">Hiểu được tâm tư của ba mẹ muốn lưu giữ những khoảnh khắc đầy ý nghĩa đó, Bon studio đã làm việc chăm chỉ để cho ra rất nhiều những bối cảnh đáng yêu ...</p>
-            </a>
-          </li>
-
-          <li class="blog__item">
-            <a class="blog__content" href="/blog/1.html">
-              <div class="blog__image">
-                <img src="<?= $images ?>/top/img-blog-01.png" alt="" width="330" height="220">
-              </div>
-              <h3 class="blog__title">Chụp hình sơ sinh - Bộ hình quý giá nhất cuộc đời con yêu</h3>
-              <p class="blog__description">Giai đoạn sơ sinh là thời điểm rất ý nghĩa và quan trọng với con, mỗi khoảnh khắc của con là kỷ niệm vô giá nên ba mẹ đừng quên lưu giữ nhé!</p>
-            </a>
-          </li>
-
-          <li class="blog__item">
-            <a class="blog__content" href="/blog/1.html">
-              <div class="blog__image">
-                <img src="<?= $images ?>/top/img-blog-02.png" alt="" width="330" height="220">
-              </div>
-              <h3 class="blog__title">Mừng sinh nhật bé, mừng niềm vui của ba mẹ</h3>
-              <p class="blog__description">Hiểu được tâm tư của ba mẹ muốn lưu giữ những khoảnh khắc đầy ý nghĩa đó, Bon studio đã làm việc chăm chỉ để cho ra rất nhiều những bối cảnh đáng yêu ...</p>
-            </a>
-          </li>
-
-          <li class="blog__item">
-            <a class="blog__content" href="/blog/1.html">
-              <div class="blog__image">
-                <img src="<?= $images ?>/top/img-blog-03.png" alt="" width="330" height="220">
-              </div>
-              <h3 class="blog__title">Tết đến nơi rồi! Ối giời ơi các bạn mình ơi!</h3>
-              <p class="blog__description">Hiểu được tâm tư của ba mẹ muốn lưu giữ những khoảnh khắc đầy ý nghĩa đó, Bon studio đã làm việc chăm chỉ để cho ra rất nhiều những bối cảnh đáng yêu ...</p>
-            </a>
-          </li>
-
+          <?php }
+          wp_reset_postdata(); ?>
         </ul>
+<?php } ?>
         <div class="page-pagination"></div>
       </div>
     </section>

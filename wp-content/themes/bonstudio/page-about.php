@@ -23,7 +23,7 @@ $images = get_template_directory_uri() . '/assets/images';
         ／
       </li>
       <li>
-        <label class="">Page abc xyz</label>
+        <label class="">Giới thiệu</label>
       </li>
     </ul>
     <section class="section about">
