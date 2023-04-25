@@ -20,6 +20,10 @@ $images = get_template_directory_uri() . '/assets/images';
         ／
       </li>
       <li>
+        <a href="/blog/" class="">Blogs</a>
+        ／
+      </li>
+      <li>
         <label class=""><?php the_title(); ?></label>
       </li>
     </ul>
@@ -36,7 +40,7 @@ $images = get_template_directory_uri() . '/assets/images';
 	            echo '<span class="category">' . esc_html( $categories[0]->name ) . '</span>';
             }
             ?>
-            <time class="date" datetime="<?php the_time('Y-m-d'); ?>">BonStudio, <?php the_time('Y.n.d'); ?></time>
+            <time class="date" datetime="<?php the_time('Y-m-d'); ?>">BonStudio, <?php the_time('d.n.Y'); ?></time>
           </p>
           <h2 class="article__name"><?php the_title(); ?></h2>
           <div class="article__image">

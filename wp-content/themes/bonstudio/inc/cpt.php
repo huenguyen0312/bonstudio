@@ -41,6 +41,26 @@ function create_post_type()
       )
     )
   );
+  register_post_type(
+    'blog',
+    array(
+      'labels' => array(
+        'name' => __('Blogs'),
+        'singular_name' => __('blog')
+      ),
+      'public' => true,
+      'publicly_queryable' => true,
+      'has_archive' => true,
+      'rewrite' => array('slug' => 'blog', 'with_front' => false),
+      'show_in_rest' => false,
+      'show_ui' => true,
+      'show_in_menu' => true,
+      'taxonomies'  => array('category', 'post_tag'),
+      'supports' => array(
+        'title', 'editor', 'excerpt', 'author', 'thumbnail', 'revisions', 'custom-fields',
+      )
+    )
+  );
 }
 
 add_action('init', 'create_post_type');

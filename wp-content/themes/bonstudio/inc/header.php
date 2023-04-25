@@ -22,15 +22,15 @@ $images = get_template_directory_uri() . "/assets/images";
           </li>
 
           <li class="header-menu__item">
-            <a href="/services/">Báo giá - Dịch vụ</a>
+            <a href="/service/">Báo giá - Dịch vụ</a>
           </li>
 
           <li class="header-menu__item">
-            <a href="/albums/">Thư viện ảnh</a>
+            <a href="/album/">Thư viện ảnh</a>
           </li>
 
           <li class="header-menu__item">
-            <a href="/blogs/">Blog</a>
+            <a href="/blog/">Blog</a>
           </li>
 
         </ul>

@@ -1,7 +1,4 @@
 <?php
-/**
- * Template Name: Services
- */
 get_header();
 $images = get_template_directory_uri() . '/assets/images';
 ?>
