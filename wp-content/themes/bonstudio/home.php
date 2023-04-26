@@ -153,49 +153,34 @@ $images = get_template_directory_uri() . "/assets/images";
       </div>
     </section>
 
+  <!-- Album section-->
+  <?php
+    $argsAlbum = array(
+      'post_type' => 'album',
+      'orderby' => 'date',
+      'order' => 'DESC',
+      'posts_per_page' => 6,
+      'offset'         => 1,
+    );
+
+  $album_query = new WP_Query( $argsAlbum );
+  if($album_query->have_posts()): ?>
     <section class="section album">
       <div class="container">
         <h2 class="section__title"><span>Album ảnh đẹp</span></h2>
         <ul class="album__list">
-
+	        <?php while($album_query->have_posts()): $album_query->the_post(); ?>
           <li class="album__item js-show-album-slider" data-micromodal-trigger="showAlbumSlider" data-index="0">
             <div class="album__image">
-              <img src="<?= $images ?>/top/img-album-01.png" alt="" width="330" height="250">
+              <img src="<?= get_the_post_thumbnail_url() ?>" alt="" width="330" height="250">
             </div>
           </li>
-
-          <li class="album__item js-show-album-slider" data-micromodal-trigger="showAlbumSlider" data-index="1">
-            <div class="album__image">
-              <img src="<?= $images ?>/top/img-album-02.png" alt="" width="330" height="250">
-            </div>
-          </li>
-
-          <li class="album__item js-show-album-slider" data-micromodal-trigger="showAlbumSlider" data-index="2">
-            <div class="album__image">
-              <img src="<?= $images ?>/top/img-album-03.png" alt="" width="330" height="250">
-            </div>
-          </li>
-
-          <li class="album__item js-show-album-slider" data-micromodal-trigger="showAlbumSlider" data-index="3">
-            <div class="album__image">
-              <img src="<?= $images ?>/top/img-album-04.png" alt="" width="330" height="250">
-            </div>
-          </li>
-
-          <li class="album__item js-show-album-slider" data-micromodal-trigger="showAlbumSlider" data-index="4">
-            <div class="album__image">
-              <img src="<?= $images ?>/top/img-album-05.png" alt="" width="330" height="250">
-            </div>
-          </li>
-
-          <li class="album__item js-show-album-slider" data-micromodal-trigger="showAlbumSlider" data-index="5">
-            <div class="album__image">
-              <img src="<?= $images ?>/top/img-album-06.png" alt="" width="330" height="250">
-            </div>
-          </li>
+          <?php endwhile;
+          wp_reset_postdata();
+          ?>
 
         </ul>
-        <a class="btn album__btn" href="#">
+        <a class="btn album__btn" href="/album/">
           <span>XEM THÊM</span>
           <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M1.10657 1.10669L7.21313 7.21326L1.10657 13.3198" stroke="white"/>
@@ -214,43 +199,15 @@ $images = get_template_directory_uri() . "/assets/images";
           </header>
           <div class="modal__content" id="modal-1-content">
             <ul class="album-slider ">
-
+	            <?php while($album_query->have_posts()): $album_query->the_post(); ?>
               <li class="album-slider__item">
                 <div class="album__image">
-                  <img src="<?= $images ?>/top/img-album-01@2x.png" alt="" width="330" height="250">
+                  <img src="<?= get_the_post_thumbnail_url() ?>" alt="">
                 </div>
               </li>
-
-              <li class="album-slider__item">
-                <div class="album__image">
-                  <img src="<?= $images ?>/top/img-album-02@2x.png" alt="" width="330" height="250">
-                </div>
-              </li>
-
-              <li class="album-slider__item">
-                <div class="album__image">
-                  <img src="<?= $images ?>/top/img-album-03@2x.png" alt="" width="330" height="250">
-                </div>
-              </li>
-
-              <li class="album-slider__item">
-                <div class="album__image">
-                  <img src="<?= $images ?>/top/img-album-04@2x.png" alt="" width="330" height="250">
-                </div>
-              </li>
-
-              <li class="album-slider__item">
-                <div class="album__image">
-                  <img src="<?= $images ?>/top/img-album-05@2x.png" alt="" width="330" height="250">
-                </div>
-              </li>
-
-              <li class="album-slider__item">
-                <div class="album__image">
-                  <img src="<?= $images ?>/top/img-album-06@2x.png" alt="" width="330" height="250">
-                </div>
-              </li>
-
+              <?php endwhile;
+              wp_reset_postdata();
+              ?>
             </ul>
           </div>
         </div>
@@ -260,74 +217,39 @@ $images = get_template_directory_uri() . "/assets/images";
         </div>
       </div>
     </div>
+  <?php endif; ?>
 
+<!-- Blog section: get news/blog list-->
+  <?php
+  $argsBlog = array(
+    'post_type' => 'blog',
+    'orderby' => 'date',
+    'order' => 'DESC',
+    'posts_per_page' => 6,
+    'offset'         => 1,
+  );
+
+  $news_query = new WP_Query( $argsBlog );
+  if($news_query->have_posts()): ?>
     <section class="section blog">
       <div class="container">
-        <h2 class="section__title"><span>Blog</span></h2>
+        <h2 class="section__title"><span>Blogs</span></h2>
         <ul class="blog__list">
-
+	      <?php while($news_query->have_posts()): $news_query->the_post(); ?>
           <li class="blog__item">
-            <a class="blog__content" href="#">
+            <a class="blog__content" href="<?php the_permalink(); ?>">
               <div class="blog__image">
-                <img src="<?= $images ?>/top/img-blog-01.png" alt="" width="330" height="220">
+                <img src="<?= get_the_post_thumbnail_url() ?>" alt="" width="330" height="220">
               </div>
-              <h3 class="blog__title">Chụp hình sơ sinh - Bộ hình quý giá nhất cuộc đời con yêu</h3>
-              <p class="blog__description">Giai đoạn sơ sinh là thời điểm rất ý nghĩa và quan trọng với con, mỗi khoảnh khắc của con là kỷ niệm vô giá nên ba mẹ đừng quên lưu giữ nhé!</p>
+              <h3 class="blog__title"><?php the_title(); ?></h3>
+              <p class="blog__description"><?= get_the_excerpt() ?></p>
             </a>
           </li>
-
-          <li class="blog__item">
-            <a class="blog__content" href="#">
-              <div class="blog__image">
-                <img src="<?= $images ?>/top/img-blog-02.png" alt="" width="330" height="220">
-              </div>
-              <h3 class="blog__title">Mừng sinh nhật bé, mừng niềm vui của ba mẹ</h3>
-              <p class="blog__description">Hiểu được tâm tư của ba mẹ muốn lưu giữ những khoảnh khắc đầy ý nghĩa đó, Bon studio đã làm việc chăm chỉ để cho ra rất nhiều những bối cảnh đáng yêu ...</p>
-            </a>
-          </li>
-
-          <li class="blog__item">
-            <a class="blog__content" href="#">
-              <div class="blog__image">
-                <img src="<?= $images ?>/top/img-blog-03.png" alt="" width="330" height="220">
-              </div>
-              <h3 class="blog__title">Tết đến nơi rồi! Ối giời ơi các bạn mình ơi!</h3>
-              <p class="blog__description">Hiểu được tâm tư của ba mẹ muốn lưu giữ những khoảnh khắc đầy ý nghĩa đó, Bon studio đã làm việc chăm chỉ để cho ra rất nhiều những bối cảnh đáng yêu ...</p>
-            </a>
-          </li>
-
-          <li class="blog__item">
-            <a class="blog__content" href="#">
-              <div class="blog__image">
-                <img src="<?= $images ?>/top/img-blog-04.png" alt="" width="330" height="220">
-              </div>
-              <h3 class="blog__title">Tiết lộ bí quyết tạo dáng chụp ảnh gia đình đẹp ai cũng cần biết</h3>
-              <p class="blog__description">Chụp ảnh gia đình hiện nay đang rất được các gia đình đều mong muốn sở hữu. Bởi nó giúp lưu giữ những khoảnh khắc hạnh phúc của cả nhà bạn.</p>
-            </a>
-          </li>
-
-          <li class="blog__item">
-            <a class="blog__content" href="#">
-              <div class="blog__image">
-                <img src="<?= $images ?>/top/img-blog-05.png" alt="" width="330" height="220">
-              </div>
-              <h3 class="blog__title">Tết đến nơi rồi! Ối giời ơi các bạn mình ơi!</h3>
-              <p class="blog__description">Hiểu được tâm tư của ba mẹ muốn lưu giữ những khoảnh khắc đầy ý nghĩa đó, Bon studio đã làm việc chăm chỉ để cho ra rất nhiều những bối cảnh đáng yêu ...</p>
-            </a>
-          </li>
-
-          <li class="blog__item">
-            <a class="blog__content" href="#">
-              <div class="blog__image">
-                <img src="<?= $images ?>/top/img-blog-06.png" alt="" width="330" height="220">
-              </div>
-              <h3 class="blog__title">Tết đến nơi rồi! Ối giời ơi các bạn mình ơi!</h3>
-              <p class="blog__description">Hiểu được tâm tư của ba mẹ muốn lưu giữ những khoảnh khắc đầy ý nghĩa đó, Bon studio đã làm việc chăm chỉ để cho ra rất nhiều những bối cảnh đáng yêu ...</p>
-            </a>
-          </li>
-
+        <?php endwhile;
+        wp_reset_postdata();
+        ?>
         </ul>
-        <a class="btn blog__btn" href="#">
+        <a class="btn blog__btn" href="/blog/">
           <span>XEM THÊM</span>
           <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M1.10657 1.10669L7.21313 7.21326L1.10657 13.3198" stroke="white"/>
@@ -335,6 +257,7 @@ $images = get_template_directory_uri() . "/assets/images";
         </a>
       </div>
     </section>
+  <?php endif; ?>
   </main>
 <?php
 get_footer();

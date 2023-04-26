@@ -16,8 +16,7 @@ function create_post_type()
       'show_ui' => true,
       'show_in_menu' => true,
       'supports' => array(
-        'title', 'editor',
-        'menu_icon' => 'dashicons-admin-post',
+	      'title', 'editor', 'excerpt', 'author', 'thumbnail', 'revisions', 'custom-fields',
       )
     )
   );
@@ -36,8 +35,7 @@ function create_post_type()
       'show_ui' => true,
       'show_in_menu' => true,
       'supports' => array(
-        'title', 'editor',
-        'menu_icon' => 'dashicons-admin-post',
+	      'title', 'excerpt', 'author', 'thumbnail', 'revisions', 'custom-fields',
       )
     )
   );

@@ -3,7 +3,7 @@ get_header();
 $images = get_template_directory_uri() . '/assets/images';
 $current_page = $_GET['page'] ?? 1;
 $current_page = (int)$current_page;
-$perPage = 6;
+$perPage = 9;
 
 $posts = new WP_Query(array(
 	'post_type' => 'blog',
@@ -80,6 +80,7 @@ $posts = new WP_Query(array(
 				$base_url = '/';
 
 				?>
+        <?php if($total_page > 1) { ?>
 				<div class="">
 					<div class="blog__pagination">
 						<ul class="pagination">
@@ -136,6 +137,7 @@ $posts = new WP_Query(array(
 						</ul>
 					</div>
 				</div>
+        <?php } ?>
 			</div>
 		</section>
 	</main>

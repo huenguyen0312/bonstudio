@@ -50,7 +50,7 @@ $images = get_template_directory_uri() . '/assets/images';
 	          <?php the_content(); ?>
           </div>
           <div class="article__button">
-            <a href="/blogs/" class="btn">Quay lại</a>
+            <a href="/blog/" class="btn">Quay lại</a>
           </div>
 
         </div>
