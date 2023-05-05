@@ -10,13 +10,13 @@ function create_post_type()
       ),
       'public' => true,
       'publicly_queryable' => true,
-      'has_archive' => true,
-      'rewrite' => array('slug' => 'service', 'with_front' => false),
+      'has_archive' => false,
+      'rewrite' => array('slug' => 'service', 'with_front' => true),
       'show_in_rest' => false,
       'show_ui' => true,
       'show_in_menu' => true,
       'supports' => array(
-	      'title', 'editor', 'excerpt', 'author', 'thumbnail', 'revisions', 'custom-fields',
+	      'title', 'excerpt', 'author', 'thumbnail', 'revisions', 'custom-fields',
       )
     )
   );
@@ -35,7 +35,7 @@ function create_post_type()
       'show_ui' => true,
       'show_in_menu' => true,
       'supports' => array(
-	      'title', 'excerpt', 'author', 'thumbnail', 'revisions', 'custom-fields',
+	      'title', 'excerpt', 'thumbnail', 'revisions', 'custom-fields',
       )
     )
   );
