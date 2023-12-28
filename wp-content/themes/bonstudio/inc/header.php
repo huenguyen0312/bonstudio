@@ -1,12 +1,14 @@
 <?php
 $images = get_template_directory_uri() . "/assets/images";
+$logo = get_field('logo', 'option');
+$logo_footer = get_field('footer_logo', 'option');
 ?>
 <header class="header">
   <div class="container header__container">
     <div class="header--left">
       <a href="/" class="logo">
-        <img class="logo--main" src="<?= $images ?>/top/logo.svg" alt="" width="168" height="24">
-        <img class="logo--scroll" src="<?= $images ?>/top/logo-footer.svg" alt="" width="168" height="24">
+        <img class="logo--main" src="<?= $logo['url'] ?>" alt="" width="168" height="24">
+        <img class="logo--scroll" src="<?= $logo_footer['url'] ?>" alt="" width="168" height="24">
       </a>
     </div>
     <div class="header--right">
@@ -31,6 +33,10 @@ $images = get_template_directory_uri() . "/assets/images";
 
           <li class="header-menu__item">
             <a href="/blog/">Blog</a>
+          </li>
+
+          <li class="header-menu__item">
+            <a href="/contact/">Liên hệ</a>
           </li>
 
         </ul>

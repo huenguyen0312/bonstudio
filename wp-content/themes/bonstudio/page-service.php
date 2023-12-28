@@ -26,6 +26,7 @@ $posts = new WP_Query(array(
 
 		<section class="section product-section">
 			<div class="container">
+      <!-- list all service-->
         <?php if ($posts->have_posts()) { ?>
 				<div class="product-group">
           <?php while ($posts->have_posts()) {
@@ -80,13 +81,14 @@ $posts = new WP_Query(array(
 
 				</div>
         <?php } ?>
-
+      <!--  post content - price table -->
 		  <?php if (have_posts()) :
 			  the_content();
 		  endif; ?>
 
 			</div>
 		</section>
+    <!-- modal show product detail-->
 		<div class="modal micromodal micromodal-product" id="showProductDetail" aria-hidden="true">
 			<div class="modal__overlay" tabindex="-1">
 				<button class="modal__close" aria-label="Close modal" data-micromodal-close tabindex="0">

@@ -32,118 +32,48 @@ $images = get_template_directory_uri() . "/assets/images";
       </div>
     </section>
 
+    <?php
+    $reasons = get_field('reason', 'option');
+    ?>
     <section class="section reason">
       <div class="container">
         <h2 class="section__title"><span>Vì sao nên lựa chọn Bon Studio?</span></h2>
         <div class="reason__list">
-
+          <?php foreach( $reasons as $reason ): ?>
           <div class="reason__item">
             <div class="reason__icon">
-              <img src="<?= $images ?>/top/icon-reason-01.svg" alt="" width="100" height="100">
+              <img src="<?= $reason['icon']['url'] ?>" alt="" width="100" height="100">
             </div>
-            <h3 class="reason__title">Giá cả hợp lý</h3>
-            <p class="reason__description">Giá cực yêu cho một bộ ảnh gia đình, em bé, nghệ thuật full từ A-Z</p>
+            <h3 class="reason__title"><?= $reason['title'] ?></h3>
+            <p class="reason__description"><?= $reason['description'] ?></p>
           </div>
-
-          <div class="reason__item">
-            <div class="reason__icon">
-              <img src="<?= $images ?>/top/icon-reason-02.svg" alt="" width="100" height="100">
-            </div>
-            <h3 class="reason__title">Trang phục đa dạng</h3>
-            <p class="reason__description">Studio luôn cập nhập liên tục trang phục đa dạng, bắt kịp gu hot nhất, đầy đủ phụ kiện từ bé sơ sinh cho đến đại gia đình</p>
-          </div>
-
-          <div class="reason__item">
-            <div class="reason__icon">
-              <img src="<?= $images ?>/top/icon-reason-03.svg" alt="" width="100" height="100">
-            </div>
-            <h3 class="reason__title">Chuyên nghiệp</h3>
-            <p class="reason__description">Đội ngũ photographer 9x trẻ trung, nhiệt tình và sáng tạo trong công việc, đảm bảo sẽ không bỏ lỡ bất kỳ khoảnh khắc nào</p>
-          </div>
-
-          <div class="reason__item">
-            <div class="reason__icon">
-              <img src="<?= $images ?>/top/icon-reason-04.svg" alt="" width="100" height="100">
-            </div>
-            <h3 class="reason__title">Chất lượng</h3>
-            <p class="reason__description">Cơ sở trang thiết bị hiện đại,máy móc tân tiến, nhân sự tay nghề cao lâu năm, chuyên nghiệp</p>
-          </div>
-
+          <?php endforeach;?>
         </div>
       </div>
     </section>
-
+<!--    service section-->
+	  <?php
+	  $top_services = get_field('top_service', 'option');
+	  ?>
     <section class="section service">
       <div class="container">
         <h2 class="section__title section__title--white"><span>Các dịch vụ tại Bon Studio</span></h2>
         <div class="slide-wrap">
           <div class="service__list js-service-slider">
-
+            <?php foreach( $top_services as $top_service ): ?>
             <div class="service__item">
               <div class="service__image">
-                <img src="<?= $images ?>/top/img-service-01.png" alt="" width="100" height="100">
+                <img src="<?= $top_service['image']['url'] ?>" alt="" width="300" height="200">
               </div>
-              <h3 class="service__title">Chụp ảnh trẻ em</h3>
-              <a class="btn service__btn" href="/service/index.html">
+              <h3 class="service__title"><?= $top_service['title'] ?></h3>
+              <a class="btn service__btn" href="<?= $top_service['link'] ?>">
                 <span>CHI TIẾT</span>
                 <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M1.10657 1.10669L7.21313 7.21326L1.10657 13.3198" stroke="white"/>
                 </svg>
               </a>
             </div>
-
-            <div class="service__item">
-              <div class="service__image">
-                <img src="<?= $images ?>/top/img-service-02.png" alt="" width="100" height="100">
-              </div>
-              <h3 class="service__title">Chụp ảnh New born</h3>
-              <a class="btn service__btn" href="/service/index.html">
-                <span>CHI TIẾT</span>
-                <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M1.10657 1.10669L7.21313 7.21326L1.10657 13.3198" stroke="white"/>
-                </svg>
-              </a>
-            </div>
-
-            <div class="service__item">
-              <div class="service__image">
-                <img src="<?= $images ?>/top/img-service-03.png" alt="" width="100" height="100">
-              </div>
-              <h3 class="service__title">Chụp ảnh Gia đình</h3>
-              <a class="btn service__btn" href="/service/index.html">
-                <span>CHI TIẾT</span>
-                <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M1.10657 1.10669L7.21313 7.21326L1.10657 13.3198" stroke="white"/>
-                </svg>
-              </a>
-            </div>
-
-            <div class="service__item">
-              <div class="service__image">
-                <img src="<?= $images ?>/top/img-service-02.png" alt="" width="100" height="100">
-              </div>
-              <h3 class="service__title">Chụp ảnh mẹ bầu</h3>
-              <a class="btn service__btn" href="/service/index.html">
-                <span>CHI TIẾT</span>
-                <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M1.10657 1.10669L7.21313 7.21326L1.10657 13.3198" stroke="white"/>
-                </svg>
-              </a>
-            </div>
-
-            <div class="service__item">
-              <div class="service__image">
-                <img src="<?= $images ?>/top/img-service-02.png" alt="" width="100" height="100">
-              </div>
-              <h3 class="service__title">Chụp ảnh chân dung</h3>
-              <a class="btn service__btn" href="/service/index.html">
-                <span>CHI TIẾT</span>
-                <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M1.10657 1.10669L7.21313 7.21326L1.10657 13.3198" stroke="white"/>
-                </svg>
-              </a>
-            </div>
-
+            <?php endforeach;?>
           </div>
           <div class="slide__arrow">
             <div class="btn-slide btn-prev"><span>&nbsp;</span></div>
@@ -258,6 +188,10 @@ $images = get_template_directory_uri() . "/assets/images";
       </div>
     </section>
   <?php endif; ?>
+
+    <section class="section contact">
+
+    </section>
   </main>
 <?php
 get_footer();
